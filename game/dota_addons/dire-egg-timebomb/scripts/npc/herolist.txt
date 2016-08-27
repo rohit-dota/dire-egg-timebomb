@@ -5,5 +5,5 @@
 
 "CustomHeroList"
 {
-  "npc_dota_hero_windranger"
+  "npc_dota_hero_windrunner" "1"
 }
