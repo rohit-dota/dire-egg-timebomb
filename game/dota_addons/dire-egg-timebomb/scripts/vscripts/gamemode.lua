@@ -123,11 +123,18 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
-    function()
-      DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      return 30.0 -- Rerun this timer every 30 game-time seconds 
-    end)
+  DebugPrint("[DET] Creating a mudgolem_clone for each player")
+    local players = {}
+    for i=1, DOTA_MAX_PLAYERS do
+      local player = PlayerInstanceFromIndex(i)
+      if player and player:IsPlayer() then
+        local mudgolem_clone = CreateUnitByName("npc_mudgolem_clone", Vector(0, 0, 0), true, nil, nil, player:GetTeamNumber())
+        DebugPrint("[DET] Speed of " .. mudgolem_clone:GetUnitName() .. " is " .. mudgolem_clone:GetKeyValue("DET_Speed"))
+        -- mudgolem_clone:SetControllableByPlayer(player:GetPlayerID(), true)
+        table.insert(turn_timers, mudgolem_clone)
+        StartTimer(mudgolem_clone)
+      end
+    end
 end
 
 
