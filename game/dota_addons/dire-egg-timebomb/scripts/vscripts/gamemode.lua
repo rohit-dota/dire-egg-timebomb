@@ -132,9 +132,9 @@ function GameMode:OnGameInProgress()
       if player and player:IsPlayer() then
         local mudgolem_clone = CreateUnitByName("npc_mudgolem_clone", Vector(0, 0, 0), true, nil, nil, player:GetTeamNumber())
         DebugPrint("[DET] Speed of " .. mudgolem_clone:GetUnitName() .. " is " .. mudgolem_clone:GetKeyValue("DET_Speed"))
-        -- mudgolem_clone:SetControllableByPlayer(player:GetPlayerID(), true)
-        table.insert(turn_timers, mudgolem_clone)
-        StartTimer(mudgolem_clone)
+        mudgolem_clone:SetControllableByPlayer(player:GetPlayerID(), true)
+        -- table.insert(turn_timers, mudgolem_clone)
+        -- StartTimer(mudgolem_clone)
       end
     end
 end
