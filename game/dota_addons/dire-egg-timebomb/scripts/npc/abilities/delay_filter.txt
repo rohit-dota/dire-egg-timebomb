@@ -12,11 +12,11 @@
             "Passive"                        "1"
             "IsHidden"                       "1"
             "OnUnitMoved"
-            // Triggers on Move/Casting/Hold/Stop
+            // Triggers on Move
             {
                 "RunScript"
                 {
-                    "ScriptFile"    "scripts/vscripts/abilities.lua"
+                    "ScriptFile"    "scripts/vscripts/abilities/delay_filter.lua"
                     "Function"      "delay_filter"
                 }
             }
