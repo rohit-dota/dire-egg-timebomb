@@ -116,6 +116,31 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityManaCost"       "0 0 0 0"
 	  }
+	"delay_filter"
+	  {
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "rubick_empty1"
+	    "MaxLevel"                      "1"
+	
+	    "Modifiers"
+	    {
+	        "modifier_delay_filter"
+	        {
+	            "Passive"                        "1"
+	            "IsHidden"                       "1"
+	            "OnUnitMoved"
+	            // Triggers on Move
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "scripts/vscripts/abilities/delay_filter.lua"
+	                    "Function"      "delay_filter"
+	                }
+	            }
+	        }
+	    }
+	  }
 	//-------------------
 	// Dummy stuff
 	//-------------------

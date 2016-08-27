@@ -92,8 +92,10 @@
 	  } 
 	"npc_mudgolem_clone"
 	{	
-		//DET-specific
-		"DET_Speed"        "150.0"
+			// DET-specific
+			//----------------------------------------------------------------
+			"DET_Speed"        "150.0"
+	
 			// General
 			//----------------------------------------------------------------
 			"Model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.mdl"	// Model.
@@ -108,8 +110,8 @@
 			//----------------------------------------------------------------
 			"Ability1"					"mud_golem_hurl_boulder"			// Ability 1
 			"Ability2"					"mud_golem_rock_destroy"			// Ability 2
-			"Ability3"					""			// Ability 3
-			"Ability4"					""			// Ability 4
+			"Ability3"					"delay_filter"						// Ability 3
+			"Ability4"					""									// Ability 4
 	
 			// Armor
 			//----------------------------------------------------------------
