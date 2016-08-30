@@ -1,0 +1,11 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/clicks.js" />
+		<include src="file://{resources}/scripts/buttons.js" />
+	</scripts>
+	<script>
+		$.Msg( "Compiled Panorama Scripts!" );
+	</script>
+	<Panel class="Scripts" hittest="false">
+	</Panel>
+</root>
