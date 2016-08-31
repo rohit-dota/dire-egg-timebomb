@@ -10,9 +10,13 @@ GameUI.SetMouseCallback(function(eventName, arg){
 });
 
 function OnRightButtonPressed(){
-	$.Msg('js: clicked at ' + pos)
+	var mPos = GameUI.GetCursorPosition()
+	var gamePosition = Game.ScreenXYToWorld(mPos[0], mPos[1])
+
+	$.Msg('cursor position is ' + mPos)
+	$.Msg('game world position is ' + gamePosition)
 	var RBPressedEvent = {
-		"cursor_position": GameUI.GetCursorPosition(),
+		"cursor_position": gamePosition, // what is the accurate way to determine the map position?
 		"playerID": Players.GetLocalPlayer()
 	}
 	GameEvents.SendCustomGameEventToServer("right_click", RBPressedEvent)

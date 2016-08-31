@@ -43,6 +43,14 @@ require('internal/events')
 require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
+-- file for turn timers functions
+require('turntimers')
+-- file for move orders functions
+require('moveorders')
+-- file for all ui-related events
+require('ui_events')
+-- file for all ui-related event listeners
+require('ui_listeners')
 
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
@@ -130,11 +138,7 @@ function GameMode:OnGameInProgress()
     for i=1, DOTA_MAX_PLAYERS do
       local player = PlayerInstanceFromIndex(i)
       if player and player:IsPlayer() then
-        local mudgolem_clone = CreateUnitByName("npc_mudgolem_clone", Vector(0, 0, 0), true, nil, nil, player:GetTeamNumber())
-        DebugPrint("[DET] Speed of " .. mudgolem_clone:GetUnitName() .. " is " .. mudgolem_clone:GetKeyValue("DET_Speed"))
-        mudgolem_clone:SetControllableByPlayer(player:GetPlayerID(), true)
-        -- table.insert(turn_timers, mudgolem_clone)
-        -- StartTimer(mudgolem_clone)
+        local mudgolem_clone = TurnTimers:CreateUnitWithTurnTimerForPlayer("npc_mudgolem_clone", player)
       end
     end
 end

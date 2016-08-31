@@ -11,6 +11,21 @@
   {
           "MaxPlayers"                    "10"
   }
+  "Default_Keys"
+    {
+        "01"
+        {
+            "Key"       "SPACE"
+            "Command"   "ConfirmTurnButton"
+            "Name"      "Confirm Turn"
+        }
+        "02"
+        {
+            "Key"       "Q"
+            "Command"   "+CustomGameTestButton"
+            "Name"      "Example"
+        }
+    }
 //  "desert_duo"
 //  {
 //          "MaxPlayers"                    "10"

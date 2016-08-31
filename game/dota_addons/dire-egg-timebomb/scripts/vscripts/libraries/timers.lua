@@ -118,6 +118,11 @@ function Timers:Think()
     if v.endTime == nil then
       v.endTime = now
     end
+
+    -- move the target if the timer is paused
+    if v.paused then
+      v.endTime = v.endTime + TIMERS_THINK
+    end
     -- Check if the timer has finished
     if now >= v.endTime then
       -- Remove from timers list
@@ -218,10 +223,46 @@ function Timers:CreateTimer(name, args, context)
   end
 
   args.context = context
+  args.paused = false
 
   Timers.timers[name] = args 
 
   return name
+end
+
+function Timers:PauseTimer(name)
+  if(Timers.timers[name]) then
+    Timers.timers[name].paused = true
+  end
+end
+
+function Timers:ResumeTimer(name)
+  if(Timers.timers[name]) then
+    Timers.timers[name].paused = false
+  end
+end
+
+function Timers:GetRemainingTime(name)
+  local timer = Timers.timers[name]
+  if not timer then
+    return nil
+  end
+
+  local bUseGameTime = true
+  if timer.useGameTime ~= nil and timer.useGameTime == false then
+    bUseGameTime = false
+  end
+
+  local now = GameRules:GetGameTime()
+  if not bUseGameTime then
+    now = Time()
+  end
+
+  if timer.endTime == nil then
+    timer.endTime = now
+  end
+
+  return timer.endTime - now
 end
 
 function Timers:RemoveTimer(name)

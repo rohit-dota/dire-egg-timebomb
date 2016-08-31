@@ -1,20 +1,22 @@
-function OnExecuteAbility1ButtonPressed()
+function OnConfirmTurnButtonPressed()
 {
-  $.Msg("'S' Pressed or Released");
+  $.Msg("confirm turn button pressed");
+  var confirmTurnButtonEvent = {}
+  GameEvents.SendCustomGameEventToServer("confirm_turn_button", confirmTurnButtonEvent)
 }
 
 function OnTestButtonPressed()
 {
-  $.Msg("'Z' Pressed");
+  $.Msg("'ESC' Pressed");
 }
 
 function OnTestButtonReleased()
 {
-  $.Msg("'Z' Released");
+  $.Msg("'ESC' Released");
 }
 
 (function() {
-  Game.AddCommand( "CustomGameExecuteAbility1", OnExecuteAbility1ButtonPressed, "", 0 );
+  Game.AddCommand( "ConfirmTurnButton", OnConfirmTurnButtonPressed, "", 0 );
   Game.AddCommand( "+CustomGameTestButton", OnTestButtonPressed, "", 0 );
   Game.AddCommand( "-CustomGameTestButton", OnTestButtonReleased, "", 0 );
 })();
