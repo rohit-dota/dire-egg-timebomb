@@ -8,7 +8,6 @@
 		//----------------------------------------------------------------
 		"Model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.mdl"	// Model.
 		"BaseClass"					"npc_dota_creep_neutral"
-		"UnitLabel"					"score_golem"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"4"
 		"ModelScale" 					"1.1"
