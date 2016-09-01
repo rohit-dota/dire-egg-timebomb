@@ -18,6 +18,7 @@ function TurnTimers:CreateUnitWithTurnTimerForPlayer(unitName, player)
     print("unit " .. unit.timerName .. " spawned")
     unit.destinations = {}
     unit.controller = player:GetPlayerID()
+	unit:SetControllableByPlayer(unit.controller, true)
     table.insert(self.timed_units, unit)
     self:StartTimer(unit)
     return unit
@@ -25,9 +26,11 @@ end
 
 function TurnTimers:StartTurn(unit)
 	print("[TurnTimers] A unit is taking its turn: " .. unit.timerName)
+	-- print("Position is: ")
+	-- print(unit:GetAbsOrigin())
 	self.activeUnit = unit
 	unit:Stop()
-	unit.timerActive = false 
+	unit.timerActive = false
 	self:PauseAllTimers()
 	-- pause all turn timers here
 	-- halt all movement and projectiles temporarily
