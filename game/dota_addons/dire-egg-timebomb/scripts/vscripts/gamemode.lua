@@ -140,6 +140,7 @@ function GameMode:OnGameInProgress()
     for i=1, DOTA_MAX_PLAYERS do
       local player = PlayerInstanceFromIndex(i)
       if player and player:IsPlayer() then
+        local thunderlizard_clone = TurnTimers:CreateUnitWithTurnTimerForPlayer("npc_thunderlizard_clone", player)
         local mudgolem_clone = TurnTimers:CreateUnitWithTurnTimerForPlayer("npc_mudgolem_clone", player)
       end
     end
