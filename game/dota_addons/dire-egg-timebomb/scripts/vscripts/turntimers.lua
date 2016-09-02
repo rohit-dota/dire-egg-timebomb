@@ -60,6 +60,7 @@ function TurnTimers:StartAllTimers()
 end
 
 function TurnTimers:PauseAllTimers()
+	print("[TurnTimers] pausing all timers")
 	for _,unit in pairs(self.timed_units) do
 		self:PauseTimer(unit)
 	end
@@ -88,6 +89,7 @@ function TurnTimers:StartTimer(unit)
 end
 
 function TurnTimers:PauseTimer(unit)
+	print("[TurnTimers] pausing " .. unit.timerName)
 	Timers:PauseTimer(unit.timerName)
 end
 
