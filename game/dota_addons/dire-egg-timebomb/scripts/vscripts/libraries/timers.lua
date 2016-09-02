@@ -121,7 +121,7 @@ function Timers:Think()
 
     -- move the target if the timer is paused
     if v.paused then
-      v.endTime = v.endTime + TIMERS_THINK
+      v.endTime = v.endTime + (now - v.oldNow)
     end
     -- Check if the timer has finished
     if now >= v.endTime then
@@ -167,6 +167,8 @@ function Timers:Think()
         Timers:HandleEventError('Timer', k, nextCall)
       end
     end
+
+    v.oldNow = now
   end
 
   return TIMERS_THINK
@@ -224,6 +226,7 @@ function Timers:CreateTimer(name, args, context)
 
   args.context = context
   args.paused = false
+  args.oldNow = now
 
   Timers.timers[name] = args 
 
